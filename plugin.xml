@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="xwang.cordova.alipay" version="0.0.1">
+	<name>Alipay</name>
+	<description>A cordova plugin, a JS version of Alipay SDK</description>
+	<license>MIT</license>
+	<keywords>cordova,alipay,payment</keywords>
+	<repo>https://github.com/hkizuna/cordova-plugin-alipay.git</repo>
+	<issue>https://github.com/hkizuna/cordova-plugin-alipay/issues</issue>
+
+	<preference name="PARTNERID" />
+	<!-- required cordova version -->
+	<engines>
+		<engine name="cordova" version=">=3.9.2" />
+	</engines>
+	<!-- js module -->
+	<js-module src="www/alipay.js" name="Alipay">
+		<clobbers target="Alipay" />
+	</js-module>
+
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="Alipay">
+				<param name="ios-package" value="CDVAlipay" />
+				<param name="onload" value="true" />
+			</feature>
+			<preference name="PARTNERID" value="$PARTNERID" />
+		</config-file>
+
+		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+	      	<array>
+	          	<dict>
+	              	<key>CFBundleURLName</key>
+	              	<string>alipay</string>
+	              	<key>CFBundleURLSchemes</key>
+	              	<array>
+	              		<string>$PARTNERID</string>
+	              	</array>
+	          	</dict>
+	      	</array>
+		</config-file>
+
+		<!-- plugin source code -->
+		<header-file src="src/ios/CDVAlipay.h" />
+		<source-file src="src/ios/CDVAlipay.m" />
+
+		<!-- Alipay-->
+		<framework src="src/ios/libs/AlipaySDK.framework" custom="true" />
+
+		<!-- other required frameworks -->
+		<framework src="SystemConfiguration.framework" />
+		<framework src="CoreTelephony.framework" />
+		<framework src="QuartzCore.framework" />
+		<framework src="CoreText.framework" />
+		<framework src="CoreGraphics.framework" />
+		<framework src="UIKit.framework" />
+		<framework src="Foundation.framework" />
+		<framework src="CFNetwork.framework" />
+		<framework src="CoreMotion.framework" />
+		<framework src="libz.dylib" />
+		<framework src="libc++.dylib" />
+	</platform>
+</plugin>
