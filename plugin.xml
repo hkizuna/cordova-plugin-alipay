@@ -61,4 +61,38 @@
 		<framework src="libz.dylib" />
 		<framework src="libc++.dylib" />
 	</platform>
+
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Alipay">
+				<param name="android-package" value="xwang.cordova.alipay.Alipay"/>
+				<param name="onload" value="true" />
+			</feature>
+			<preference name="PARTNERID" value="$PARTNERID" />
+        </config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
+			 <uses-permission android:name="android.permission.INTERNET" />
+			 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+			 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity
+				android:name="com.alipay.sdk.app.H5PayActivity"
+				android:configChanges="orientation|keyboardHidden|navigation"
+				android:exported="false"
+				android:screenOrientation="behind">
+			</activity>
+			<activity
+				android:name="com.alipay.sdk.auth.AuthActivity"
+				android:configChanges="orientation|keyboardHidden|navigation"
+				android:exported="false"
+				android:screenOrientation="behind">
+			 </activity>
+		</config-file>
+		<source-file src="src/android/libs/alipaySdk-20160111.jar" target-dir="libs" />
+		<source-file src="src/android/Alipay.java" target-dir="src/xwang/cordova/alipay" />
+	</platform>
 </plugin>
