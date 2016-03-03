@@ -25,7 +25,7 @@
 				<param name="ios-package" value="CDVAlipay" />
 				<param name="onload" value="true" />
 			</feature>
-			<preference name="PARTNERID" value="$PARTNERID" />
+			<preference name="PARTNERID" value="a$PARTNERID" />
 		</config-file>
 
 		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
@@ -35,7 +35,7 @@
 	              	<string>alipay</string>
 	              	<key>CFBundleURLSchemes</key>
 	              	<array>
-	              		<string>$PARTNERID</string>
+	              		<string>a$PARTNERID</string>
 	              	</array>
 	          	</dict>
 	      	</array>
